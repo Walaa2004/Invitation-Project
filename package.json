@@ -1,0 +1,11 @@
+{
+  "name": "abhinav-kaviya-3d-wedding-invitation",
+  "version": "1.0.0",
+  "description": "3D Animated Scrolling Botanical Watercolor Wedding Website for Abhinav with Kaviya (14 Dec 2026)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "deploy": "npx wrangler pages deploy . --project-name abhinav-and-kaviya-wedding-invitation"
+  }
+}

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amira & Mostafa — Wedding Invitation | 19 Dec 2026</title>
+  <meta name="description" content="Mr. Venugopal K K & Mrs. Bindu K P cordially invite you and your family to the wedding of Amira & Mostafa on Monday, 19 Dec 2026 at Reef Club Resort, Eranjikkal, Kozhikode." />
+
+  <!-- Google Fonts matching the classical serif & delicate calligraphy on the card -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Lenis Smooth Scrolling CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Soft Watercolor Paper Wash & Texture -->
+  <div class="watercolor-backdrop" aria-hidden="true"></div>
+  <div class="paper-grain" aria-hidden="true"></div>
+
+  <!-- Interactive 3D WebGL Canvas (Three.js Botanicals, Rings, Petals & 3D Card) -->
+  <canvas id="webgl-canvas" aria-hidden="true"></canvas>
+
+  <!-- Botanical Watercolor Corner Arrangements (inspired by the uploaded card) -->
+  <div class="botanical-frame" aria-hidden="true">
+    <!-- Top Left: Dusty Mauve Watercolor Rose & Eucalyptus Foliage -->
+    <svg class="corner-flora corner-top-left" id="flora-tl" viewBox="0 0 380 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="roseCenter" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#7B4654" />
+          <stop offset="45%" stop-color="#AC7482" />
+          <stop offset="80%" stop-color="#D4A6B1" />
+          <stop offset="100%" stop-color="#EBD3D9" stop-opacity="0.9" />
+        </radialGradient>
+        <linearGradient id="sageLeaf1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#9BB499" />
+          <stop offset="100%" stop-color="#587561" />
+        </linearGradient>
+        <linearGradient id="oliveLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#8FA977" />
+          <stop offset="100%" stop-color="#5D784F" />
+        </linearGradient>
+      </defs>
+      <!-- Trailing lower branch -->
+      <path d="M12 160 C35 230, 50 295, 95 365" stroke="#4D6A58" stroke-width="2.2" fill="none" opacity="0.8"/>
+      <path d="M24 205 C50 198, 65 212, 48 224 C32 228, 24 214, 24 205 Z" fill="#5D7D69" opacity="0.85"/>
+      <path d="M40 245 C72 236, 84 252, 62 264 C46 268, 38 256, 40 245 Z" fill="#6D8C78" opacity="0.85"/>
+      <path d="M58 288 C88 278, 98 294, 78 306 C62 310, 56 298, 58 288 Z" fill="#587561" opacity="0.82"/>
+      <path d="M76 325 C104 316, 114 330, 94 342 C78 345, 74 335, 76 325 Z" fill="#779580" opacity="0.8"/>
+      <path d="M35 270 C15 282, 8 298, 28 302 C44 298, 42 280, 35 270 Z" fill="#4D6A58" opacity="0.85"/>
+
+      <!-- Long pointed olive leaves beneath rose -->
+      <path d="M95 135 C100 195, 112 248, 118 290 C88 242, 78 195, 95 135 Z" fill="url(#oliveLeaf)" opacity="0.88"/>
+      <path d="M115 125 C142 182, 168 232, 188 272 C142 232, 118 185, 115 125 Z" fill="url(#oliveLeaf)" opacity="0.9"/>
+      <path d="M72 135 C65 182, 62 225, 65 258 C50 218, 52 175, 72 135 Z" fill="#7B9669" opacity="0.8"/>
+
+      <!-- Upper eucalyptus stems -->
+      <path d="M110 80 C165 55, 210 38, 260 28" stroke="#687D6B" stroke-width="2" fill="none" opacity="0.75"/>
+      <ellipse cx="182" cy="48" rx="22" ry="15" transform="rotate(-22 182 48)" fill="url(#sageLeaf1)" opacity="0.85"/>
+      <ellipse cx="222" cy="34" rx="18" ry="13" transform="rotate(-15 222 34)" fill="#89A489" opacity="0.82"/>
+      <ellipse cx="248" cy="54" rx="15" ry="11" transform="rotate(14 248 54)" fill="#7A967B" opacity="0.8"/>
+
+      <!-- Broad eucalyptus leaves framing the rose -->
+      <ellipse cx="48" cy="118" rx="38" ry="26" transform="rotate(-35 48 118)" fill="url(#sageLeaf1)" opacity="0.9"/>
+      <ellipse cx="78" cy="45" rx="34" ry="24" transform="rotate(20 78 45)" fill="#8CA68B" opacity="0.88"/>
+      <ellipse cx="145" cy="128" rx="34" ry="22" transform="rotate(28 145 128)" fill="#839D82" opacity="0.86"/>
+
+      <!-- Watercolor Dusty Mauve Rose -->
+      <g transform="translate(96, 92)">
+        <!-- Outer petals -->
+        <path d="M-45 -10 C-58 -45, -15 -65, 12 -48 C42 -62, 65 -25, 48 8 C62 38, 25 62, -5 50 C-38 62, -62 25, -45 -10 Z" fill="#DFBEC6" opacity="0.88"/>
+        <path d="M-36 5 C-48 -28, -12 -52, 18 -38 C45 -44, 54 -8, 36 18 C44 42, 8 54, -15 38 C-40 42, -46 20, -36 5 Z" fill="#C996A3" opacity="0.9"/>
+        <!-- Mid petals -->
+        <path d="M-25 -6 C-32 -28, 2 -38, 18 -24 C36 -26, 38 6, 22 20 C22 36, -8 38, -18 22 C-34 22, -32 6, -25 -6 Z" fill="#B57D8B" opacity="0.92"/>
+        <!-- Inner swirl -->
+        <circle cx="2" cy="0" r="21" fill="url(#roseCenter)"/>
+        <path d="M-10 -4 C-4 -14, 12 -12, 14 0 C14 10, -2 14, -10 6 C-14 0, -6 -8, 2 -6" stroke="#F4DFE4" stroke-width="2" fill="none" opacity="0.75"/>
+      </g>
+    </svg>
+
+    <!-- Top Right: Eucalyptus Foliage, Olive Sprigs & White-Blush Blossoms -->
+    <svg class="corner-flora corner-top-right" id="flora-tr" viewBox="0 0 400 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Sweeping olive & willow leaves -->
+      <path d="M380 40 C310 65, 225 45, 140 20 C215 62, 295 82, 380 40 Z" fill="#7D9668" opacity="0.88"/>
+      <path d="M365 68 C285 82, 200 62, 118 42 C192 86, 278 102, 365 68 Z" fill="#688257" opacity="0.9"/>
+      <path d="M385 180 C362 245, 365 315, 392 378 C348 318, 345 245, 385 180 Z" fill="#799262" opacity="0.86"/>
+
+      <!-- Main Eucalyptus Branch & Silver Dollar Leaves -->
+      <path d="M390 15 C330 95, 285 175, 248 255" stroke="#5A7260" stroke-width="2.5" fill="none" opacity="0.8"/>
+      <ellipse cx="335" cy="96" rx="42" ry="30" transform="rotate(-28 335 96)" fill="#6C8773" opacity="0.9"/>
+      <ellipse cx="295" cy="148" rx="34" ry="25" transform="rotate(-15 295 148)" fill="#849E89" opacity="0.88"/>
+      <ellipse cx="268" cy="198" rx="28" ry="20" transform="rotate(-35 268 198)" fill="#78937E" opacity="0.85"/>
+      <ellipse cx="242" cy="242" rx="24" ry="18" transform="rotate(-20 242 242)" fill="#96B09B" opacity="0.82"/>
+      <ellipse cx="305" cy="235" rx="26" ry="20" transform="rotate(25 305 235)" fill="#8CA691" opacity="0.84"/>
+
+      <!-- Delicate Waxflowers / Buds -->
+      <g transform="translate(238, 98)">
+        <circle cx="0" cy="0" r="10" fill="#F6F4F0" stroke="#D5C5B8" stroke-width="1.5"/>
+        <circle cx="0" cy="0" r="4" fill="#9E7B66"/>
+      </g>
+      <g transform="translate(205, 138)">
+        <path d="M0 0 L-18 -12 L-10 -22 L2 -10 Z" fill="#EFEAE4"/>
+        <path d="M0 0 L-22 4 L-18 15 L-2 8 Z" fill="#E5D5CE"/>
+        <circle cx="0" cy="0" r="4" fill="#8C6D58"/>
+      </g>
+      <g transform="translate(342, 188)">
+        <circle cx="0" cy="0" r="9" fill="#F6F4F0" stroke="#D5C5B8" stroke-width="1.5"/>
+        <circle cx="0" cy="0" r="3.5" fill="#9E7B66"/>
+      </g>
+    </svg>
+
+    <!-- Bottom Left: Trailing Eucalyptus Sprig, Olive Leaves & Dusty Rose Blossom -->
+    <svg class="corner-flora corner-bottom-left" id="flora-bl" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 370 C60 290, 120 220, 240 180" stroke="#4D6A58" stroke-width="2.2" fill="none" opacity="0.8"/>
+      <ellipse cx="65" cy="305" rx="34" ry="22" transform="rotate(-30 65 305)" fill="url(#sageLeaf1)" opacity="0.88"/>
+      <ellipse cx="115" cy="260" rx="30" ry="20" transform="rotate(25 115 260)" fill="#8CA68B" opacity="0.86"/>
+      <ellipse cx="170" cy="225" rx="26" ry="17" transform="rotate(-15 170 225)" fill="url(#oliveLeaf)" opacity="0.85"/>
+      <ellipse cx="225" cy="195" rx="22" ry="14" transform="rotate(35 225 195)" fill="#78937E" opacity="0.82"/>
+      <g transform="translate(145, 235)">
+        <circle cx="0" cy="0" r="14" fill="#DFBEC6" opacity="0.85"/>
+        <circle cx="0" cy="0" r="8" fill="#B57D8B" opacity="0.9"/>
+      </g>
+    </svg>
+
+    <!-- Bottom Right: Sweeping Silver Dollar Eucalyptus Branch & Golden Stardust Buds -->
+    <svg class="corner-flora corner-bottom-right" id="flora-br" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M370 370 C310 280, 240 220, 130 190" stroke="#5A7260" stroke-width="2.2" fill="none" opacity="0.8"/>
+      <ellipse cx="310" cy="300" rx="36" ry="24" transform="rotate(35 310 300)" fill="#6C8773" opacity="0.88"/>
+      <ellipse cx="255" cy="255" rx="30" ry="21" transform="rotate(-25 255 255)" fill="#849E89" opacity="0.86"/>
+      <ellipse cx="195" cy="220" rx="25" ry="18" transform="rotate(20 195 220)" fill="#7D9668" opacity="0.84"/>
+      <ellipse cx="145" cy="198" rx="20" ry="14" transform="rotate(-28 145 198)" fill="#96B09B" opacity="0.82"/>
+      <g transform="translate(210, 240)">
+        <circle cx="0" cy="0" r="8" fill="#F6F4F0" stroke="#D5C5B8" stroke-width="1.2"/>
+        <circle cx="0" cy="0" r="3" fill="#C2A878"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Reusable Calligraphic Capital 'A' Symbol & Parallax Botanical Glyphs -->
+  <svg width="0" height="0" style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+    <symbol id="calligraphic-cap-a" viewBox="0 0 590 807">
+      <path
+        fill="currentColor"
+        fill-rule="evenodd"
+        d="M34 807Q12 794 6 780Q0 765 0 755Q0 727 21 679Q41 631 76 570Q110 508 152 442Q115 439 89 438Q63 437 44 437L9 437Q20 408 48 397Q75 385 113 385Q130 385 148 387Q166 389 185 392Q236 315 290 243Q343 170 390 114Q436 57 467 28Q496 0 515 0Q526 0 540 9Q553 17 568 32Q558 40 543 75Q527 109 510 161Q492 213 475 275Q458 337 444 402Q429 466 421 524Q412 582 412 626Q412 664 421 685Q429 706 449 706Q475 706 508 670Q541 634 580 558L590 568Q560 648 514 699Q467 750 417 750Q376 750 358 714Q339 677 339 616Q339 584 344 546Q348 508 356 467Q312 460 276 456Q239 451 208 447Q161 534 117 626Q72 718 34 807ZM363 432Q378 366 398 299Q418 231 441 170Q463 109 483 63Q452 82 412 131Q371 179 326 249Q281 318 234 401Q268 408 302 417Q335 425 363 432Z"
+      />
+    </symbol>
+
+    <!-- Botanical Vector Symbol: Floating Sage Eucalyptus Coin Leaf -->
+    <symbol id="sym-eucalyptus-leaf" viewBox="0 0 100 140">
+      <path d="M50 10 C20 40 10 90 50 130 C90 90 80 40 50 10 Z" fill="#6B8871" opacity="0.85"/>
+      <path d="M50 10 C35 45 30 85 50 128 C65 85 60 45 50 10 Z" fill="#8CA68F" opacity="0.9"/>
+      <path d="M50 20 L50 120" stroke="#48604D" stroke-width="2.2" stroke-linecap="round" opacity="0.6"/>
+      <path d="M50 50 Q35 40 22 36" stroke="#48604D" stroke-width="1.2" opacity="0.45"/>
+      <path d="M50 75 Q68 64 78 58" stroke="#48604D" stroke-width="1.2" opacity="0.45"/>
+    </symbol>
+
+    <!-- Botanical Vector Symbol: Floating Dusty Rose Petal -->
+    <symbol id="sym-rose-petal" viewBox="0 0 120 120">
+      <path d="M60 10 C30 15 10 45 20 75 C30 105 70 115 95 95 C115 75 110 35 85 18 C77 12 69 9 60 10 Z" fill="#C99AA4" opacity="0.88"/>
+      <path d="M60 25 C45 30 30 50 38 72 C46 92 70 98 86 84 C98 70 96 42 78 30 Z" fill="#DEB8C1" opacity="0.82"/>
+      <path d="M60 30 Q52 65 60 95" stroke="#9E6B78" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+    </symbol>
+
+    <!-- Botanical Vector Symbol: Floating Olive Leaf Sprig -->
+    <symbol id="sym-olive-sprig" viewBox="0 0 120 160">
+      <path d="M60 150 Q55 85 70 20" stroke="#5E7866" stroke-width="2.5" fill="none" opacity="0.75"/>
+      <ellipse cx="44" cy="52" rx="22" ry="9" transform="rotate(-35 44 52)" fill="#7D9678" opacity="0.88"/>
+      <ellipse cx="82" cy="78" rx="24" ry="10" transform="rotate(25 82 78)" fill="#688257" opacity="0.88"/>
+      <ellipse cx="48" cy="110" rx="20" ry="9" transform="rotate(-30 48 110)" fill="#8FA977" opacity="0.86"/>
+    </symbol>
+
+    <!-- Botanical Vector Symbol: Golden Sparkle Stardust Glyph -->
+    <symbol id="sym-golden-sparkle" viewBox="0 0 60 60">
+      <path d="M30 0 Q30 30 60 30 Q30 30 30 60 Q30 30 0 30 Q30 30 30 0 Z" fill="#C2A878" opacity="0.8"/>
+      <circle cx="30" cy="30" r="4.5" fill="#F4E8D4"/>
+    </symbol>
+  </svg>
+
+  <!-- Right-side Scroll Progress Track -->
+  <div class="scroll-progress-track" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+  </div>
+
+  <!-- Top Navigation & Floating Ambient Controls -->
+  <header class="top-nav">
+    <a href="#welcome" class="nav-monogram" aria-label="Abhinav and Kaviya Home">
+      A<span>&amp;</span>K
+    </a>
+
+    <nav class="nav-links" aria-label="Main Navigation">
+      <a href="#welcome" class="nav-link active">Home</a>
+      <a href="#couple" class="nav-link">Couple</a>
+      <a href="#date" class="nav-link">Date</a>
+      <a href="#venue" class="nav-link">Venue</a>
+      <a href="#reception" class="nav-link">Reception</a>
+      <a href="#invitation-card" class="nav-link">Card &amp; RSVP</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button type="button" id="audio-toggle-btn" class="icon-btn" aria-label="Toggle ambient chimes">
+        <span class="audio-icon" aria-hidden="true">🎵</span>
+        <span id="audio-label">Ambience</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       Main Scrollytelling Content
+       ======================================================================== -->
+  <main id="smooth-content">
+
+    <!-- SECTION 1: HERO / WEDDING INVITATION OPENING -->
+    <section class="scroll-section" id="welcome" data-scene="0">
+      <!-- Floating Parallax Botanicals -->
+      <svg class="parallax-float" data-speed="-0.32" data-scroll-speed="-2.4" style="top: 14%; left: 8%; width: 75px; height: 105px; transform: rotate(-24deg);" aria-hidden="true"><use href="#sym-eucalyptus-leaf" /></svg>
+      <svg class="parallax-float" data-speed="0.3" data-scroll-speed="2.2" style="top: 22%; right: 9%; width: 68px; height: 68px; transform: rotate(32deg);" aria-hidden="true"><use href="#sym-rose-petal" /></svg>
+      <svg class="parallax-float" data-speed="0.45" data-scroll-speed="3.2" style="bottom: 12%; right: 14%; width: 34px; height: 34px;" aria-hidden="true"><use href="#sym-golden-sparkle" /></svg>
+      <svg class="parallax-float" data-speed="-0.22" data-scroll-speed="-1.8" style="bottom: 14%; left: 10%; width: 70px; height: 95px; transform: rotate(18deg);" aria-hidden="true"><use href="#sym-olive-sprig" /></svg>
+
+      <div class="watercolor-card reveal-card">
+        <div class="eyebrow-badge" data-speed="-0.15" data-scroll-speed="-1">✦ Wedding Invitation ✦</div>
+
+        <p class="cordially-line" style="margin-bottom: 1.25rem;">
+          Cordially invite you and your family to celebrate the wedding of
+        </p>
+
+        <div class="couple-names-stage" data-speed="0.1" data-scroll-speed="0.8">
+          <h1 class="couple-name" aria-label="Abhinav"><svg class="cap-a-svg" viewBox="0 0 590 807" aria-hidden="true"><use href="#calligraphic-cap-a"/></svg>bhinav</h1>
+          <span class="couple-with">with</span>
+          <h1 class="couple-name">Kaviya</h1>
+        </div>
+
+        <a href="#couple" class="scroll-cue">
+          <span>Scroll to Explore in 3D</span>
+          <svg width="18" height="24" viewBox="0 0 18 24" fill="none">
+            <rect x="1" y="1" width="16" height="22" rx="8" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="9" cy="7" r="2" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE COUPLE & INTERTWINED 3D RINGS STAGE -->
+    <section class="scroll-section" id="couple" data-scene="1">
+      <!-- Floating Parallax Botanicals -->
+      <svg class="parallax-float" data-speed="0.32" data-scroll-speed="2.4" style="top: 15%; left: 8%; width: 72px; height: 72px; transform: rotate(-18deg);" aria-hidden="true"><use href="#sym-rose-petal" /></svg>
+      <svg class="parallax-float" data-speed="-0.38" data-scroll-speed="-2.8" style="top: 36%; right: 7%; width: 85px; height: 115px; transform: rotate(40deg);" aria-hidden="true"><use href="#sym-eucalyptus-leaf" /></svg>
+      <svg class="parallax-float" data-speed="0.25" data-scroll-speed="1.8" style="bottom: 16%; left: 12%; width: 32px; height: 32px;" aria-hidden="true"><use href="#sym-golden-sparkle" /></svg>
+      <svg class="parallax-float" data-speed="-0.26" data-scroll-speed="-2" style="bottom: 18%; right: 10%; width: 68px; height: 92px; transform: rotate(-25deg);" aria-hidden="true"><use href="#sym-olive-sprig" /></svg>
+
+      <div class="watercolor-card reveal-card">
+        <div class="eyebrow-badge" data-speed="-0.15" data-scroll-speed="-1">✦ Two Souls, One Journey ✦</div>
+
+        <div class="couple-names-stage" data-speed="0.1" data-scroll-speed="0.8">
+          <span class="couple-name" aria-label="Abhinav"><svg class="cap-a-svg" viewBox="0 0 590 807" aria-hidden="true"><use href="#calligraphic-cap-a"/></svg>bhinav</span>
+          <span class="couple-with">with</span>
+          <span class="couple-name">Kaviya</span>
+        </div>
+
+        <p class="cordially-line" style="margin-bottom: 1.2rem;">
+          With the blessings of our parents and elders, we begin our new chapter together surrounded by family, love, and timeless traditions.
+        </p>
+
+        <div class="ornamental-divider" aria-hidden="true">
+          <svg viewBox="0 0 240 20" fill="none">
+            <line x1="10" y1="10" x2="95" y2="10" stroke="currentColor" stroke-width="1"/>
+            <circle cx="120" cy="10" r="3.5" fill="currentColor"/>
+            <circle cx="106" cy="10" r="2" fill="currentColor" opacity="0.6"/>
+            <circle cx="134" cy="10" r="2" fill="currentColor" opacity="0.6"/>
+            <line x1="145" y1="10" x2="230" y2="10" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
+          <div style="padding: 1.15rem 1rem; background: rgba(255,255,255,0.55); border-radius: 16px; border: 1px solid rgba(94,120,102,0.18);">
+            <p style="font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-eucalyptus); margin-bottom: 0.4rem;">Groom's Parents</p>
+            <p style="font-weight: 700; font-size: 1.25rem; line-height: 1.45;">
+              <span style="display: block; white-space: nowrap;">Mr. Venugopal K K</span>
+              <span style="display: block; white-space: nowrap;">&amp; Mrs. Bindu K P</span>
+            </p>
+            <p style="font-style: italic; color: var(--text-secondary); margin-top: 0.25rem;">Vadakara</p>
+          </div>
+          <div style="padding: 1.15rem 1rem; background: rgba(255,255,255,0.55); border-radius: 16px; border: 1px solid rgba(94,120,102,0.18);">
+            <p style="font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-rose-deep); margin-bottom: 0.4rem;">Bride's Parents</p>
+            <p style="font-weight: 700; font-size: 1.25rem; line-height: 1.45;">
+              <span style="display: block; white-space: nowrap;">Mr. M Sivapregassam</span>
+              <span style="display: block; white-space: nowrap;">&amp; Mrs. G Lilavady</span>
+            </p>
+            <p style="font-style: italic; color: var(--text-secondary); margin-top: 0.25rem;">Pondicherry</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE SACRED DATE, MUHURTHAM & COUNTDOWN -->
+    <section class="scroll-section" id="date" data-scene="2">
+      <!-- Floating Parallax Botanicals -->
+      <svg class="parallax-float" data-speed="-0.32" data-scroll-speed="-2.2" style="top: 15%; right: 8%; width: 75px; height: 100px; transform: rotate(-20deg);" aria-hidden="true"><use href="#sym-olive-sprig" /></svg>
+      <svg class="parallax-float" data-speed="0.36" data-scroll-speed="2.6" style="top: 40%; left: 7%; width: 66px; height: 66px; transform: rotate(26deg);" aria-hidden="true"><use href="#sym-rose-petal" /></svg>
+      <svg class="parallax-float" data-speed="-0.25" data-scroll-speed="-1.8" style="bottom: 14%; right: 12%; width: 80px; height: 110px; transform: rotate(-35deg);" aria-hidden="true"><use href="#sym-eucalyptus-leaf" /></svg>
+      <svg class="parallax-float" data-speed="0.4" data-scroll-speed="2.8" style="bottom: 18%; left: 14%; width: 32px; height: 32px;" aria-hidden="true"><use href="#sym-golden-sparkle" /></svg>
+
+      <div class="watercolor-card reveal-card">
+        <div class="eyebrow-badge" data-speed="-0.15" data-scroll-speed="-1">✦ Save The Date ✦</div>
+
+        <!-- Exact Date Lockup from the Invitation Card -->
+        <div class="date-lockup" data-speed="0.12" data-scroll-speed="1" aria-label="Monday 14 December 2026">
+          <div class="date-wing">Monday</div>
+          <div class="date-day-number">14</div>
+          <div class="date-wing">Dec 2026</div>
+        </div>
+
+        <p class="muhurtham-line">Muhurtham : 12.00 noon - 1.00 pm</p>
+        <p class="venue-line">Venue: Reef Club Resort, Eranjikkal, Kozhikode</p>
+
+        <!-- Live Countdown to Dec 14, 2026 12:00 PM IST -->
+        <div class="countdown-grid" id="countdown-timer" aria-label="Countdown to Wedding Muhurtham">
+          <div class="countdown-cell">
+            <span class="countdown-num" id="cd-days">00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-cell">
+            <span class="countdown-num" id="cd-hours">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-cell">
+            <span class="countdown-num" id="cd-mins">00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-cell">
+            <span class="countdown-num" id="cd-secs">00</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <a
+            id="google-cal-btn"
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+of+Abhinav+with+Kaviya&dates=20261214T063000Z/20261214T073000Z&details=Mr.+Venugopal+K+K+%26+Mrs.+Bindu+K+P+cordially+invite+you+and+your+family+to+the+wedding+of+Abhinav+with+Kaviya.+Muhurtham:+12:00+noon+-+1:00+pm.+Party+will+leave+home+at+8:30+am+(No+function+at+home).&location=Reef+Club+Resort,+Eranjikkal,+Kozhikode"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            <span>📅 Add to Google Calendar</span>
+          </a>
+          <button type="button" id="download-ics-btn" class="btn-secondary">
+            <span>⬇ Save .ICS Calendar File</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: VENUE, DEPARTURE NOTES & REEF CLUB PARKING QR CODE -->
+    <section class="scroll-section" id="venue" data-scene="3">
+      <!-- Floating Parallax Botanicals -->
+      <svg class="parallax-float" data-speed="0.3" data-scroll-speed="2.2" style="top: 16%; left: 7%; width: 78px; height: 108px; transform: rotate(18deg);" aria-hidden="true"><use href="#sym-eucalyptus-leaf" /></svg>
+      <svg class="parallax-float" data-speed="-0.34" data-scroll-speed="-2.5" style="top: 26%; right: 8%; width: 70px; height: 70px; transform: rotate(-38deg);" aria-hidden="true"><use href="#sym-rose-petal" /></svg>
+      <svg class="parallax-float" data-speed="0.42" data-scroll-speed="3" style="bottom: 12%; left: 10%; width: 34px; height: 34px;" aria-hidden="true"><use href="#sym-golden-sparkle" /></svg>
+      <svg class="parallax-float" data-speed="-0.24" data-scroll-speed="-1.8" style="bottom: 15%; right: 9%; width: 72px; height: 96px; transform: rotate(15deg);" aria-hidden="true"><use href="#sym-olive-sprig" /></svg>
+
+      <div class="watercolor-card reveal-card">
+        <div class="eyebrow-badge" data-speed="-0.15" data-scroll-speed="-1">✦ Venue &amp; Travel Details ✦</div>
+
+        <h2 class="parents-names" style="margin-bottom: 0.4rem;">Reef Club Resort</h2>
+        <p class="residence-line" style="margin-bottom: 1rem;">Eranjikkal, Kozhikode, Kerala</p>
+
+        <div class="travel-notes-box">
+          <p class="travel-note">Party will leave home at 8:30 am</p>
+          <p class="travel-note">No function at home</p>
+        </div>
+
+        <div class="venue-parking-grid" data-speed="0.08" data-scroll-speed="0.6">
+          <div class="venue-details-pane">
+            <p class="muhurtham-line" style="font-size: 1.3rem;">Muhurtham : 12.00 noon - 1.00 pm</p>
+            <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 1.25rem;">
+              Join us at Reef Club Resort, Eranjikkal, Kozhikode on Monday, 14th December 2026. Scan or tap the QR code for direct access to the <strong>Reef Club Parking Area</strong>.
+            </p>
+            <div class="btn-group" style="justify-content: flex-start;">
+              <a
+                href="https://share.google/lM8gST917bG0WASsW"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-primary"
+              >
+                <span>📍 Open Venue in Google Maps</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Reef Club Parking Area QR Code (Generated for https://maps.app.goo.gl/ttpjHp7d5T87crdg7) -->
+          <div class="qr-card-pane" id="qr-enlarge-trigger" role="button" tabindex="0" aria-label="Enlarge Reef Club Parking Area QR Code">
+            <div class="qr-canvas-wrap">
+              <canvas id="parking-qr-canvas" width="297" height="297"></canvas>
+            </div>
+            <p class="qr-caption-title">Reef Club<br/>Parking Area</p>
+            <p class="qr-caption-hint">Tap to Enlarge &amp; Scan</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: WEDDING RECEPTION (16 DEC 2026) -->
+    <section class="scroll-section" id="reception" data-scene="4">
+      <!-- Floating Parallax Botanicals -->
+      <svg class="parallax-float" data-speed="0.34" data-scroll-speed="2.4" style="top: 15%; right: 9%; width: 68px; height: 68px; transform: rotate(22deg);" aria-hidden="true"><use href="#sym-rose-petal" /></svg>
+      <svg class="parallax-float" data-speed="-0.3" data-scroll-speed="-2.2" style="top: 35%; left: 7%; width: 75px; height: 100px; transform: rotate(-18deg);" aria-hidden="true"><use href="#sym-olive-sprig" /></svg>
+      <svg class="parallax-float" data-speed="0.28" data-scroll-speed="2" style="bottom: 15%; right: 12%; width: 34px; height: 34px;" aria-hidden="true"><use href="#sym-golden-sparkle" /></svg>
+      <svg class="parallax-float" data-speed="-0.26" data-scroll-speed="-1.8" style="bottom: 14%; left: 11%; width: 76px; height: 104px; transform: rotate(32deg);" aria-hidden="true"><use href="#sym-eucalyptus-leaf" /></svg>
+
+      <div class="watercolor-card reveal-card">
+        <div class="eyebrow-badge" data-speed="-0.15" data-scroll-speed="-1">✦ Wedding Reception ✦</div>
+
+        <!-- Date Lockup matching the Reception Card -->
+        <div class="date-lockup" data-speed="0.12" data-scroll-speed="1" aria-label="Wednesday 16 December 2026">
+          <div class="date-wing">Wednesday</div>
+          <div class="date-day-number">16</div>
+          <div class="date-wing">Dec 2026</div>
+        </div>
+
+        <h2 class="parents-names" style="margin-bottom: 0.35rem;">Krishnakripa Auditorium</h2>
+        <p class="residence-line" style="margin-bottom: 1rem;">Vadakara</p>
+
+        <div class="travel-notes-box">
+          <p class="travel-note">No function at home</p>
+        </div>
+
+        <div class="venue-parking-grid" data-speed="0.08" data-scroll-speed="0.6">
+          <div class="venue-details-pane">
+            <p class="muhurtham-line" style="font-size: 1.3rem;">Time : 4:30 pm - 9:30 pm</p>
+            <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 1.25rem;">
+              Cordially invite you and your family to the Wedding Reception on Wednesday, 16th December 2026 at <strong>Krishnakripa Auditorium, Vadakara</strong>.
+            </p>
+            <div class="btn-group" style="justify-content: flex-start;">
+              <a
+                href="https://share.google/ru1OXNdSFIbFyveou"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-primary"
+              >
+                <span>📍 Open Venue in Google Maps</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Reception Venue QR Code (Generated for https://share.google/ru1OXNdSFIbFyveou) -->
+          <div class="qr-card-pane" id="reception-qr-trigger" role="button" tabindex="0" aria-label="Enlarge Krishnakripa Auditorium Reception QR Code">
+            <div class="qr-canvas-wrap">
+              <canvas id="reception-qr-canvas" width="297" height="297"></canvas>
+            </div>
+            <p class="qr-caption-title">Krishnakripa<br/>Auditorium</p>
+            <p class="qr-caption-hint">Tap to Enlarge &amp; Scan</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: INTERACTIVE 3D INVITATION CARD & CONTACT AREA -->
+    <section class="scroll-section" id="invitation-card" data-scene="5">
+      <!-- Floating Parallax Botanicals -->
+      <svg class="parallax-float" data-speed="-0.3" data-scroll-speed="-2.2" style="top: 12%; left: 8%; width: 70px; height: 70px; transform: rotate(-25deg);" aria-hidden="true"><use href="#sym-rose-petal" /></svg>
+      <svg class="parallax-float" data-speed="0.35" data-scroll-speed="2.5" style="bottom: 14%; right: 8%; width: 80px; height: 110px; transform: rotate(30deg);" aria-hidden="true"><use href="#sym-eucalyptus-leaf" /></svg>
+      <svg class="parallax-float" data-speed="0.4" data-scroll-speed="2.8" style="bottom: 18%; left: 12%; width: 32px; height: 32px;" aria-hidden="true"><use href="#sym-golden-sparkle" /></svg>
+
+      <div class="card-showcase-layout">
+        <!-- Left: Interactive 3D Tilt Original Invitation Card -->
+        <div class="interactive-card-holder">
+          <div class="invitation-3d-tilt" id="tilt-card" role="button" tabindex="0" aria-label="View full wedding invitation card">
+            <img src="assets/invitation-card.png" alt="Wedding Invitation Card of Abhinav with Kaviya" />
+            <div class="invitation-glare" id="tilt-glare"></div>
+          </div>
+          <p class="tilt-hint">Move cursor to tilt in 3D • Click to view full screen</p>
+        </div>
+
+        <!-- Right: Complete Contact & RSVP Area -->
+        <div class="watercolor-card reveal-card contact-card">
+          <div class="eyebrow-badge" data-speed="-0.15" data-scroll-speed="-1">✦ Contact &amp; Assistance ✦</div>
+
+          <h2 class="parents-names" style="margin-bottom: 0.35rem;">Get in Touch</h2>
+          <p class="residence-line" style="margin-bottom: 1.25rem;">
+            Have questions about travel, directions, or the celebration? Reach out to us anytime.
+          </p>
+
+          <div class="contact-info-list">
+            <a href="tel:+919447543905" class="contact-info-item">
+              <div class="contact-icon-circle">📞</div>
+              <div class="contact-info-text">
+                <span class="contact-label">Phone &amp; WhatsApp</span>
+                <strong class="contact-value">+91 94475 43905</strong>
+              </div>
+            </a>
+
+            <a
+              href="https://share.google/lM8gST917bG0WASsW"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-info-item"
+            >
+              <div class="contact-icon-circle">📍</div>
+              <div class="contact-info-text">
+                <span class="contact-label">Wedding Venue (14 Dec 2026)</span>
+                <strong class="contact-value">Reef Club Resort, Eranjikkal</strong>
+                <span class="contact-sub">Kozhikode • Muhurtham: 12:00 noon – 1:00 pm</span>
+              </div>
+            </a>
+
+            <a
+              href="https://share.google/ru1OXNdSFIbFyveou"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-info-item"
+            >
+              <div class="contact-icon-circle">✨</div>
+              <div class="contact-info-text">
+                <span class="contact-label">Reception Venue (16 Dec 2026)</span>
+                <strong class="contact-value">Krishnakripa Auditorium</strong>
+                <span class="contact-sub">Vadakara • Time: 4:30 pm – 9:30 pm</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Quick RSVP Form -->
+          <form id="contact-whatsapp-form" class="contact-form">
+            <div class="contact-form-row">
+              <input
+                type="text"
+                id="guest-name"
+                class="contact-input"
+                placeholder="Your Name"
+                aria-label="Your Name"
+                required
+              />
+              <input
+                type="number"
+                id="guest-count"
+                class="contact-input"
+                min="1"
+                max="50"
+                placeholder="Number of Guests"
+                aria-label="Number of Guests"
+                required
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p style="font-family: var(--font-script); font-size: 2.2rem; color: var(--text-primary); margin-bottom: 0.25rem;" aria-label="Abhinav and Kaviya">
+      <svg class="cap-a-svg" viewBox="0 0 590 807" aria-hidden="true"><use href="#calligraphic-cap-a"/></svg>bhinav &amp; Kaviya
+    </p>
+    <p>14 Dec 2026 • Reef Club Resort, Kozhikode &nbsp;|&nbsp; Reception: 16 Dec 2026 • Krishnakripa Auditorium, Vadakara</p>
+  </footer>
+
+  <!-- Lightbox Modal for Full Invitation Card / Enlarged QR Code -->
+  <div class="modal-backdrop" id="lightbox-modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button type="button" class="modal-close" id="modal-close-btn" aria-label="Close modal">✕</button>
+      <h3 id="modal-title" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">
+        Wedding Invitation
+      </h3>
+      <div id="modal-body">
+        <img src="assets/invitation-card.png" alt="Wedding Invitation Card" class="modal-card-img" id="modal-img" />
+        <div id="modal-qr-container" style="display: none; padding: 1rem;">
+          <div style="width: 240px; height: 240px; margin: 0 auto 1rem; background: #fff; padding: 12px; border-radius: 16px; border: 1px solid rgba(61,80,81,0.18);">
+            <canvas id="modal-qr-canvas" width="330" height="330"></canvas>
+          </div>
+          <p style="font-size: 1.3rem; font-style: italic; font-weight: 600;">Reef Club Parking Area</p>
+          <p style="font-size: 1rem; color: var(--text-secondary); margin: 0.35rem 0 0.85rem;">Scan with your phone camera or tap below for parking navigation at Reef Club Resort, Eranjikkal.</p>
+          <a href="https://maps.app.goo.gl/ttpjHp7d5T87crdg7" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+            <span>📍 Open Parking Link in Google Maps</span>
+          </a>
+        </div>
+      </div>
+      <div class="btn-group">
+        <a href="assets/invitation-card.png" download="Abhinav-Kaviya-Wedding-Invitation.png" class="btn-primary">
+          <span>⬇ Download Invitation</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three.js & GSAP + ScrollTrigger via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis Smooth Scrolling Engine (Locomotive Scroll standard) -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="perf-patch.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

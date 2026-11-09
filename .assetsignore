@@ -1,0 +1,8 @@
+.git
+node_modules
+server.js
+package.json
+wrangler.jsonc
+.assetsignore
+README.md
+.wrangler
