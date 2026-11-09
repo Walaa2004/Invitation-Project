@@ -7,6 +7,7 @@
  *   ?test=grain     -> hides paper grain layer
  *   ?test=frame     -> hides corner flowers + floating SVG leaves
  *   ?test=nogl      -> stops all WebGL rendering (3D background)
+ *   ?test=noitems   -> turns off the one-by-one reveal
  *   ?test=keepscrub -> keeps the original parallax (for comparison)
  *   combine: ?test=grain,frame
  */
@@ -31,7 +32,7 @@
     '.modal-backdrop { background: rgba(38, 50, 51, 0.85) !important; }',
     '.corner-flora, .parallax-float, .cap-a-svg { filter: none !important; }',
     '.couple-name { text-shadow: none !important; }',
-    '.corner-flora { transition: none !important; }',
+    '.corner-flora, .parallax-float { transition: none !important; }',
     '.watercolor-card { box-shadow: 0 8px 22px rgba(61, 80, 81, 0.08) !important; }',
     '.reveal-card { will-change: transform, opacity; }',
     '.watercolor-backdrop, .paper-grain, .botanical-frame, #webgl-canvas {',
@@ -60,6 +61,42 @@
           a.timeScale(1.8); // reveal cards: ~0.55s instead of 1s
         }
       });
+
+      // Gradual reveal: items appear one by one as you scroll (cheap one-shot tweens, no scrub)
+      if (window.gsap && !has('noitems')) {
+        // 1) Floating botanicals (leaves / petals / sparkles)
+        document.querySelectorAll('.parallax-float').forEach(function (el, i) {
+          gsap.from(el, {
+            opacity: 0,
+            y: 36,
+            duration: 0.9,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 94%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+        });
+
+        // 2) Content inside each card appears block by block
+        document.querySelectorAll('.reveal-card').forEach(function (card) {
+          var kids = card.children;
+          if (!kids.length) return;
+          gsap.from(kids, {
+            opacity: 0,
+            y: 22,
+            duration: 0.6,
+            ease: 'power2.out',
+            stagger: 0.12,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 72%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+        });
+      }
     });
   }
 
