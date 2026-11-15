@@ -568,6 +568,10 @@
       ];
       const cardMesh = new THREE.Mesh(cardGeo, cardMaterials);
       card3DGroup.add(cardMesh);
+            cardMesh.scale.setScalar(0.01);
+      if (typeof gsap !== 'undefined') {
+        gsap.to(cardMesh.scale, { x: 1, y: 1, z: 1, duration: 2.5, ease: 'power2.out', delay: 0.6 });
+      }
     });
 
     // ------------------------------------------------------------------------
@@ -1048,6 +1052,26 @@
   // ==========================================================================
 
   function initInteractiveUI() {
+        // Slow fade-in for the invitation card
+    const cardHolder = document.querySelector('.interactive-card-holder');
+    if (cardHolder && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.fromTo(
+        cardHolder,
+        { opacity: 0, y: 60, scale: 0.94 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 2.4,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: cardHolder,
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    }
     // .ICS Download Button
     const icsBtn = document.getElementById('download-ics-btn');
     if (icsBtn) {
