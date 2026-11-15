@@ -942,70 +942,38 @@
 
   // Exact 29x29 QR Matrix for https://maps.app.goo.gl/ttpjHp7d5T87crdg7
   const PARKING_QR_MATRIX = [
-    '11111110111110001111101111111',
-    '10000010101111101110001000001',
-    '10111010010101110000101011101',
-    '10111010110001111110001011101',
-    '10111010010110010001001011101',
-    '10000010010100001111001000001',
+        '11111110010010011111001111111',
+    '10000010001111110111101000001',
+    '10111010111010101011001011101',
+    '10111010011100000001001011101',
+    '10111010001000010111001011101',
+    '10000010010001010011001000001',
     '11111110101010101010101111111',
-    '00000000101010100111000000000',
-    '10110111001000110110001001011',
-    '01101001101100000001011010001',
-    '11101011100100000110011010110',
-    '11111100111011000000100000001',
-    '00111011001001111101000101100',
-    '00000100011100101111001000111',
-    '10111111101000100011101000111',
-    '00000000110010111011100010010',
-    '00010110111001101011110011010',
-    '01111001101011111010110101110',
-    '10101010110001110010110110100',
-    '00101000101010001101000100100',
-    '01111111100101001111111111100',
-    '00000000110011001110100011111',
-    '11111110111001001001101011010',
-    '10000010101010010000100011011',
-    '10111010001000111000111110111',
-    '10111010110110110000010111001',
-    '10111010111101101000110100101',
-    '10000010010110010010110111010',
-    '11111110111000001010100010010'
+    '00000000111011100110100000000',
+    '11101111101101010001111000100',
+    '10011101101101001110011101001',
+    '01010011110000001010010100111',
+    '10110100000101111100111100010',
+    '01000110000011011111111101011',
+    '11101000110110111110111001001',
+    '01110011010110100110001011011',
+    '00111000000011100110100101010',
+    '00110011110101100101111101011',
+    '01110101010101100000101001101',
+    '10001011110001000010001110011',
+    '01100100011101011110110101010',
+    '10101110000010100000111110000',
+    '00000000101111011111100010111',
+    '11111110100110101011101011011',
+    '10000010110011011110100011000',
+    '10111010101100101000111110000',
+    '10111010010100011001100110111',
+    '10111010111001001111010111001',
+    '10000010111100001101110000010',
+    '11111110100010001100101100011'
   ];
 
-  // Exact 29x29 QR Matrix for https://share.google/ru1OXNdSFIbFyveou
-  const RECEPTION_QR_MATRIX = [
-    '11111110001001110001001111111',
-    '10000010010001110110001000001',
-    '10111010000100100101001011101',
-    '10111010000000110001101011101',
-    '10111010010001011000001011101',
-    '10000010100011010001001000001',
-    '11111110101010101010101111111',
-    '00000000010010100111100000000',
-    '10010110100110000101010100000',
-    '10010100100100001000011001001',
-    '10111111010100001101010001110',
-    '00101100000100110011000000110',
-    '01000010101010010000101101011',
-    '10010101001110000011110000000',
-    '01111111001100001110010011111',
-    '01000001110101101101111101010',
-    '01011111000101100000110000010',
-    '00100101000100011100011101001',
-    '10011011101111001100011010011',
-    '00010100101101001101100110011',
-    '10101110101010101000111110100',
-    '00000000111111001101100010111',
-    '11111110001101101000101010010',
-    '10000010111101010000100011111',
-    '10111010011000111000111110011',
-    '10111010100011110111101111110',
-    '10111010011010001011100011101',
-    '10000010010010101111101010010',
-    '11111110111100100000111010010'
-  ];
-
+  
   function drawQRMatrixToCanvas(targetCanvas, matrix) {
     if (!targetCanvas || !matrix) return;
     const modules = matrix.length;
@@ -1037,11 +1005,9 @@
 
   function extractParkingQRCode() {
     const qrCanvas = document.getElementById('parking-qr-canvas');
-    const receptionQrCanvas = document.getElementById('reception-qr-canvas');
     const modalQrCanvas = document.getElementById('modal-qr-canvas');
 
     drawQRMatrixToCanvas(qrCanvas, PARKING_QR_MATRIX);
-    drawQRMatrixToCanvas(receptionQrCanvas, RECEPTION_QR_MATRIX);
     drawQRMatrixToCanvas(modalQrCanvas, PARKING_QR_MATRIX);
   }
 
@@ -1057,8 +1023,7 @@
     if (!daysEl) return;
 
     // Muhurtham: Monday, 14 Dec 2026, 12:00 noon IST (+05:30)
-    const targetTime = new Date('2026-12-14T12:00:00+05:30').getTime();
-
+    const targetTime = new Date('2026-12-19T17:00:00+02:00').getTime();
     function updateTimer() {
       const now = Date.now();
       const diff = Math.max(0, targetTime - now);
@@ -1090,15 +1055,15 @@
         const icsContent = [
           'BEGIN:VCALENDAR',
           'VERSION:2.0',
-          'PRODID:-//Abhinav and Kaviya Wedding//EN',
+                    'PRODID:-//Amira and Mostafa Wedding//EN',
           'BEGIN:VEVENT',
-          'UID:abhinav-kaviya-wedding-20261214@invitation',
-          'DTSTAMP:20261012T120000Z',
-          'DTSTART:20261214T063000Z',
-          'DTEND:20261214T073000Z',
-          'SUMMARY:Wedding of Abhinav with Kaviya',
-          'DESCRIPTION:We, Mr. Venugopal K K & Mrs. Bindu K P cordially invite you and your family to the wedding of Abhinav with Kaviya. Muhurtham: 12.00 noon - 1.00 pm. Reception on 16 Dec 2026 at Krishnakripa Kalyanamandapam, Vadakara. Ph: 9447543905.',
-          'LOCATION:Reef Club Resort, Eranjikkal, Kozhikode',
+          'UID:amira-mostafa-wedding-20261219@invitation',
+          'DTSTAMP:20261115T120000Z',
+          'DTSTART:20261219T150000Z',
+          'DTEND:20261219T170000Z',
+          'SUMMARY:Wedding of Amira and Mostafa',
+          'DESCRIPTION:You are invited to the wedding of Amira and Mostafa on Saturday 19 December 2026 from 5:00 pm to 7:00 pm. Ph: 01008361340.',
+          'LOCATION:El-Mosheer Tantawy Mosque, Nasr City, Cairo',
           'END:VEVENT',
           'END:VCALENDAR'
         ].join('\r\n');
@@ -1107,7 +1072,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'Abhinav-Kaviya-Wedding-14-Dec-2026.ics';
+        a.download = 'Amira-Mostafa-Wedding-19-Dec-2026.ics';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -1155,18 +1120,12 @@
       if (!modal) return;
       if (window.lenis) window.lenis.stop();
       if (mode === 'qr' || mode === 'reception-qr') {
-        const isReception = mode === 'reception-qr';
-        modalTitle.textContent = isReception
-          ? 'Krishnakripa Kalyanamandapam — Reception QR'
-          : 'Reef Club Parking Area — QR Code';
-        drawQRMatrixToCanvas(
-          modalQrCanvas,
-          isReception ? RECEPTION_QR_MATRIX : PARKING_QR_MATRIX
-        );
+        modalTitle.textContent = 'Mosque Location — QR Code';
+        drawQRMatrixToCanvas(modalQrCanvas, PARKING_QR_MATRIX);
         modalImg.style.display = 'none';
         modalQrContainer.style.display = 'block';
       } else {
-        modalTitle.textContent = 'Original Wedding Invitation Card';
+        modalTitle.textContent = 'Our Wedding Invitation';
         modalImg.style.display = 'block';
         modalQrContainer.style.display = 'none';
       }
@@ -1211,8 +1170,8 @@
         const countInput = document.getElementById('guest-count');
         const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'Guest';
         const count = countInput && countInput.value.trim() ? countInput.value.trim() : '1';
-        const message = `Hello! I am ${name}. Number of guests attending the wedding of Abhinav and Kaviya on 14 Dec 2026: ${count}`;
-        const waUrl = `https://wa.me/919447543905?text=${encodeURIComponent(message)}`;
+        const message = `Hello! I am ${name}. Number of guests attending the wedding of Amira and Mostafa on 19 Dec 2026: ${count}`;
+        const waUrl = `https://wa.me/201008361340?text=${encodeURIComponent(message)}`;
         window.open(waUrl, '_blank', 'noopener,noreferrer');
       });
     }
