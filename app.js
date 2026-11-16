@@ -1072,6 +1072,7 @@
         }
       );
     }
+    const ourPhoto = document.querySelector('.our-photos');
     // .ICS Download Button
     const icsBtn = document.getElementById('download-ics-btn');
     if (icsBtn) {

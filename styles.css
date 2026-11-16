@@ -1041,3 +1041,37 @@ a.contact-info-item:hover {
     gap: 0.5rem;
   }
 }
+.our-photos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.75rem auto 1.25rem;
+  padding: 0 0.5rem;
+}
+
+.our-photo {
+  width: min(250px, 42vw);
+  padding: 8px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 14px 34px rgba(61, 80, 81, 0.18);
+}
+
+.our-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.our-photo--left {
+  transform: rotate(-5deg);
+  margin-right: -1.2rem;
+  z-index: 1;
+}
+
+.our-photo--right {
+  transform: rotate(4deg);
+  margin-top: 1.6rem;
+  z-index: 2;
+}
