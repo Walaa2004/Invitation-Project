@@ -1075,3 +1075,11 @@ a.contact-info-item:hover {
   margin-top: 1.6rem;
   z-index: 2;
 }
+@media (max-width: 480px) {
+  .eyebrow-badge {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    padding: 0.4rem 0.8rem;
+    white-space: nowrap;
+  }
+}

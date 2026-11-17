@@ -1080,15 +1080,15 @@
         const icsContent = [
           'BEGIN:VCALENDAR',
           'VERSION:2.0',
-                    'PRODID:-//Amira and Mostafa Wedding//EN',
+                    'PRODID:-//Mostafa and Amira Wedding//EN',
           'BEGIN:VEVENT',
-          'UID:amira-mostafa-wedding-20261219@invitation',
+          'UID:mostafa-amira-wedding-20261219@invitation',
           'DTSTAMP:20261115T120000Z',
           'DTSTART:20261219T150000Z',
           'DTEND:20261219T170000Z',
-          'SUMMARY:Wedding of Amira and Mostafa',
-          'DESCRIPTION:You are invited to the wedding of Amira and Mostafa on Saturday 19 December 2026 from 5:00 pm to 7:00 pm. Ph: 01008361340.',
-          'LOCATION:El-Mosheer Tantawy Mosque, Nasr City, Cairo',
+          'SUMMARY:Wedding of Mostafa and Amira',
+          'DESCRIPTION:You are invited to the wedding of Mostafa and Amira on Saturday 19 December 2026 from 5:00 pm to 7:00 pm.',
+          'LOCATION:El-Mosheer Tantawy Mosque, Fifth Settlement, New Cairo',
           'END:VEVENT',
           'END:VCALENDAR'
         ].join('\r\n');
@@ -1097,7 +1097,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'Amira-Mostafa-Wedding-19-Dec-2026.ics';
+        a.download = 'Mostafa-Amira-Wedding-19-Dec-2026.ics';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -1188,81 +1188,64 @@
 
     // Quick Contact / RSVP WhatsApp Form Handler
     const contactForm = document.getElementById('contact-whatsapp-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const nameInput = document.getElementById('guest-name');
-        const countInput = document.getElementById('guest-count');
-        const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'Guest';
-        const count = countInput && countInput.value.trim() ? countInput.value.trim() : '1';
-        const message = `Hello! I am ${name}. Number of guests attending the wedding of Amira and Mostafa on 19 Dec 2026: ${count}`;
-        const waUrl = `https://wa.me/201008361340?text=${encodeURIComponent(message)}`;
-        window.open(waUrl, '_blank', 'noopener,noreferrer');
-      });
-    }
+    
   }
 
   // ==========================================================================
   // 6. GENERATIVE WEB AUDIO AMBIENT CHIMES (Zero external MP3 needed)
   // ==========================================================================
 
-  function initAmbientAudio() {
+    function initAmbientAudio() {
     const btn = document.getElementById('audio-toggle-btn');
     const label = document.getElementById('audio-label');
     if (!btn) return;
 
-    let audioCtx = null;
-    let isPlaying = false;
-    let chimeInterval = null;
+    const audio = new Audio('assets/song.mp3');
+    audio.loop = true;
+    audio.volume = 0.6;
+    audio.preload = 'auto';
 
-    // Gentle pentatonic major notes in Hz (C5, D5, E5, G5, A5, C6)
-    const notes = [523.25, 587.33, 659.25, 783.99, 880.0, 1046.5];
+    let userPaused = false;
+    const gestureEvents = ['pointerup', 'touchend', 'click', 'keydown'];
 
-    function playHarpNote() {
-      if (!audioCtx || !isPlaying) return;
-      const now = audioCtx.currentTime;
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-
-      const freq = notes[Math.floor(Math.random() * notes.length)];
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, now);
-
-      gain.gain.setValueAtTime(0.001, now);
-      gain.gain.exponentialRampToValueAtTime(0.045, now + 0.08);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + 3.2);
-
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-
-      osc.start(now);
-      osc.stop(now + 3.3);
+    function syncUI() {
+      const on = !audio.paused;
+      btn.classList.toggle('playing', on);
+      if (label) label.textContent = on ? 'Playing' : 'Play music';
     }
 
+    function unlock(e) {
+      if (btn.contains(e.target)) return;
+      if (userPaused) return;
+      audio.play().catch(() => {});
+    }
+
+    function removeUnlock() {
+      gestureEvents.forEach((ev) => window.removeEventListener(ev, unlock, true));
+    }
+
+    audio.addEventListener('play', syncUI);
+    audio.addEventListener('pause', syncUI);
+    audio.addEventListener('playing', removeUnlock);
+
+    // 1) try to start immediately
+    audio.play().catch(() => {});
+    // 2) if the browser blocks it, start on the first tap / click
+    gestureEvents.forEach((ev) => window.addEventListener(ev, unlock, true));
+
+    // 3) the button toggles
     btn.addEventListener('click', () => {
-      if (!audioCtx) {
-        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        audioCtx = new AudioContextClass();
-      }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-
-      isPlaying = !isPlaying;
-      btn.classList.toggle('playing', isPlaying);
-      if (label) {
-        label.textContent = isPlaying ? 'Playing' : 'Ambience';
-      }
-
-      if (isPlaying) {
-        playHarpNote();
-        chimeInterval = setInterval(playHarpNote, 1800);
-      } else if (chimeInterval) {
-        clearInterval(chimeInterval);
+      if (audio.paused) {
+        userPaused = false;
+        audio.play().catch(() => {});
+      } else {
+        userPaused = true;
+        audio.pause();
       }
     });
-  }
 
+    syncUI();
+  }
   // ==========================================================================
   // INITIALIZE ALL MODULES ON DOM READY
   // ==========================================================================
