@@ -26,6 +26,43 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- ===== Envelope cover: tap to open the invitation ===== -->
+  <div class="env-cover" id="envelope-cover" role="dialog" aria-modal="true" aria-label="Wedding invitation. Tap to open.">
+    <svg class="env-deco env-deco--1" aria-hidden="true"><use href="#sym-eucalyptus-leaf" /></svg>
+    <svg class="env-deco env-deco--2" aria-hidden="true"><use href="#sym-rose-petal" /></svg>
+    <svg class="env-deco env-deco--3" aria-hidden="true"><use href="#sym-olive-sprig" /></svg>
+    <svg class="env-deco env-deco--4" aria-hidden="true"><use href="#sym-eucalyptus-leaf" /></svg>
+    <svg class="env-deco env-deco--5" aria-hidden="true"><use href="#sym-golden-sparkle" /></svg>
+    <svg class="env-deco env-deco--6" aria-hidden="true"><use href="#sym-golden-sparkle" /></svg>
+
+    <div class="env-stage">
+      <p class="env-eyebrow">✦ You are invited ✦</p>
+      <h2 class="env-names">Mostafa <span>&amp;</span> Amira</h2>
+      <p class="env-date">Saturday, 19 December 2026</p>
+
+      <div class="env-envelope" role="button" tabindex="0" aria-label="Open the invitation">
+        <div class="env-back"></div>
+
+        <div class="env-letter">
+          <span class="env-letter-eyebrow">The Wedding Of</span>
+          <span class="env-letter-names">Mostafa <i>&amp;</i> Amira</span>
+          <span class="env-letter-date">19 · 12 · 2026</span>
+        </div>
+
+        <div class="env-front">
+          <i class="l"></i><i class="r"></i><i class="b"></i>
+          <svg class="env-folds" viewBox="0 0 100 68" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 0 L50 38 L100 0 M0 68 L50 38 L100 68" fill="none" stroke="rgba(94,120,102,0.3)" stroke-width="1" vector-effect="non-scaling-stroke" />
+          </svg>
+        </div>
+
+        <div class="env-flap"></div>
+        <div class="env-seal">M&amp;A</div>
+      </div>
+
+      <p class="env-hint">Tap to open</p>
+    </div>
+  </div>
   <!-- Soft Watercolor Paper Wash & Texture -->
   <div class="watercolor-backdrop" aria-hidden="true"></div>
   <div class="paper-grain" aria-hidden="true"></div>
@@ -489,5 +526,56 @@
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="perf-patch.js"></script>
   <script src="app.js"></script>
+  <script>
+/* Envelope cover: opens the invitation on tap and starts the music */
+(function () {
+  var cover = document.getElementById('envelope-cover');
+  if (!cover) return;
+
+  var root = document.documentElement;
+  var opened = false;
+
+  // lock the page while the envelope is closed
+  root.classList.add('env-lock');
+  window.addEventListener('DOMContentLoaded', function () {
+    if (!opened && window.lenis) window.lenis.stop();
+  });
+
+  function finish() {
+    cover.classList.add('is-gone');
+    root.classList.remove('env-lock');
+    if (window.lenis) {
+      window.lenis.start();
+      window.lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+    if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+  }
+
+  function openInvitation() {
+    if (opened) return;
+    opened = true;
+
+    // starting the music inside the tap is what lets the browser allow sound
+    if (window.startInvitationMusic) window.startInvitationMusic();
+
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { finish(); return; }
+
+    cover.classList.add('is-open');
+    setTimeout(function () { cover.classList.add('is-leaving'); }, 1900);
+    setTimeout(finish, 3000);
+  }
+
+  cover.addEventListener('click', openInvitation);
+  cover.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openInvitation();
+    }
+  });
+})();
+</script>
 </body>
 </html>
