@@ -1243,9 +1243,7 @@
         audio.pause();
       }
     });
-    window.startInvitationMusic = () => {
-      if (!userPaused) audio.play().catch(() => {});
-    };
+
     syncUI();
   }
   // ==========================================================================
