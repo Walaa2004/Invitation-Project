@@ -1088,7 +1088,7 @@
           'DTEND:20261219T170000Z',
           'SUMMARY:Wedding of Mostafa and Amira',
           'DESCRIPTION:You are invited to the wedding of Mostafa and Amira on Saturday 19 December 2026 from 5:00 pm to 7:00 pm.',
-          'LOCATION:El-Mosheer Tantawy Mosque, Fifth Settlement, New Cairo',
+          'LOCATION:El-Mosheer Tantawy Mosque, Al Hay Al Asher, Nasr City, Cairo',
           'END:VEVENT',
           'END:VCALENDAR'
         ].join('\r\n');
@@ -1195,28 +1195,38 @@
   // 6. GENERATIVE WEB AUDIO AMBIENT CHIMES (Zero external MP3 needed)
   // ==========================================================================
 
-    function initAmbientAudio() {
+     function initAmbientAudio() {
     const btn = document.getElementById('audio-toggle-btn');
     const label = document.getElementById('audio-label');
     if (!btn) return;
 
-    const audio = new Audio('assets/song.mp3');
+    const audio = new Audio('assets/song-v2.mp3');
     audio.loop = true;
     audio.volume = 0.6;
     audio.preload = 'auto';
+    audio.muted = true; // muted autoplay is allowed, so the song loads and runs silently from the start
 
     let userPaused = false;
+    let firstUnmute = true;
     const gestureEvents = ['pointerup', 'touchend', 'click', 'keydown'];
 
-    function syncUI() {
-      const on = !audio.paused;
-      btn.classList.toggle('playing', on);
-      if (label) label.textContent = on ? 'Playing' : 'Play music';
+    function isOn() {
+      return !audio.paused && !audio.muted;
     }
 
-    function unlock(e) {
-      if (btn.contains(e.target)) return;
-      if (userPaused) return;
+    function syncUI() {
+      const on = isOn();
+      btn.classList.toggle('playing', on);
+      if (label) label.textContent = on ? 'Playing' : 'Tap for music';
+    }
+
+    function turnOn() {
+      userPaused = false;
+      if (firstUnmute) {
+        firstUnmute = false;
+        audio.currentTime = 0; // start the song from the beginning
+      }
+      audio.muted = false;
       audio.play().catch(() => {});
     }
 
@@ -1224,23 +1234,25 @@
       gestureEvents.forEach((ev) => window.removeEventListener(ev, unlock, true));
     }
 
-    audio.addEventListener('play', syncUI);
-    audio.addEventListener('pause', syncUI);
-    audio.addEventListener('playing', removeUnlock);
+    function unlock(e) {
+      if (btn.contains(e.target) || userPaused) return;
+      turnOn();
+      removeUnlock();
+    }
 
-    // 1) try to start immediately
+    ['play', 'pause', 'volumechange'].forEach((ev) => audio.addEventListener(ev, syncUI));
+
+    // start immediately (silent), then switch the sound on at the first tap
     audio.play().catch(() => {});
-    // 2) if the browser blocks it, start on the first tap / click
     gestureEvents.forEach((ev) => window.addEventListener(ev, unlock, true));
 
-    // 3) the button toggles
     btn.addEventListener('click', () => {
-      if (audio.paused) {
-        userPaused = false;
-        audio.play().catch(() => {});
-      } else {
+      removeUnlock();
+      if (isOn()) {
         userPaused = true;
         audio.pause();
+      } else {
+        turnOn();
       }
     });
 
@@ -1251,11 +1263,12 @@
   // ==========================================================================
 
   window.addEventListener('DOMContentLoaded', () => {
+    initAmbientAudio();
     initSmoothScrollAndParallax();
     initThreeExperience();
     extractParkingQRCode();
     initCountdown();
     initInteractiveUI();
-    initAmbientAudio();
+    
   });
 })();
