@@ -1255,7 +1255,9 @@
         turnOn();
       }
     });
-
+    window.startInvitationMusic = () => {
+      if (!userPaused) turnOn();
+    };
     syncUI();
   }
   // ==========================================================================
