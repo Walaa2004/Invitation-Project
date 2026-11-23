@@ -1088,7 +1088,7 @@
           'DTEND:20261219T170000Z',
           'SUMMARY:Wedding of Mostafa and Amira',
           'DESCRIPTION:You are invited to the wedding of Mostafa and Amira on Saturday 19 December 2026 from 5:00 pm to 7:00 pm.',
-          'LOCATION:El-Mosheer Tantawy Mosque, Al Hay Al Asher, Nasr City, Cairo',
+          'LOCATION:El-Moshir Tantawy Axis, Al Hay Al Asher, Nasr City, Cairo',
           'END:VEVENT',
           'END:VCALENDAR'
         ].join('\r\n');

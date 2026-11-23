@@ -1126,3 +1126,32 @@ a.contact-info-item:hover {
   font-size: clamp(0.68rem, 3.4vw, 1rem);
   white-space: nowrap;
 }
+.nw {
+  white-space: nowrap;
+}
+.contact-sub {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .contact-icon-circle {
+    display: none;
+  }
+  .contact-info-item {
+    justify-content: center;
+    text-align: center;
+    padding: 0.85rem 0.9rem;
+  }
+  .contact-info-text {
+    align-items: center;
+  }
+  .contact-label {
+    font-size: 0.56rem;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .contact-value {
+    font-size: 1.05rem;
+    white-space: nowrap;
+  }
+}
